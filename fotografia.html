@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucas Mendes - Fotografia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F8F5EC;
+            color: #2D2D2D;
+            line-height: 1.6;
+            background: url('https://www.transparenttextures.com/patterns/light-paper-fibers.png');
+        }
+        header {
+            background: linear-gradient(rgba(45, 45, 45, 0.7), rgba(45, 45, 45, 0.7)), url('https://images.pexels.com/photos/3680219/pexels-photo-3680219.jpeg') no-repeat center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 150px 20px;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+            animation: fadeInDown 1s ease;
+        }
+        header p {
+            font-size: 1.5em;
+            max-width: 700px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease 0.5s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+        .carrossel {
+            max-width: 1000px;
+            margin: 40px auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            height: 450px;
+        }
+        .carrossel-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .carrossel-item {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.7s ease;
+        }
+        .carrossel-item.ativo {
+            opacity: 1;
+        }
+        .carrossel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .carrossel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(45, 45, 45, 0.8);
+            color: #fff;
+            border: none;
+            padding: 12px 18px;
+            cursor: pointer;
+            font-size: 1.8em;
+            z-index: 10;
+            transition: background 0.3s;
+        }
+        .carrossel-btn:hover {
+            background: rgba(45, 45, 45, 1);
+        }
+        .prev { left: 15px; }
+        .next { right: 15px; }
+        .carrossel-indicadores {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        .indicador {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .indicador.ativo {
+            background: #fff;
+        }
+        .sobre, .galeria, .contato {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 40px 20px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards;
+        }
+        .sobre h2, .galeria h2, .contato h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .sobre h2::after, .galeria h2::after, .contato h2::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: #2D2D2D;
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .sobre p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            color: #555;
+        }
+        .sobre .detalhes {
+            font-size: 1.1em;
+            color: #666;
+        }
+        .galeria .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .galeria img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .galeria img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        .contato {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        .contato a {
+            display: inline-block;
+            background: linear-gradient(135deg, #2D2D2D, #555);
+            color: #fff;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.3em;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .contato a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        footer {
+            background-color: #2D2D2D;
+            color: #EDEDED;
+            padding: 30px;
+            text-align: center;
+            font-size: 1em;
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 768px) {
+            header { padding: 100px 10px; }
+            header h1 { font-size: 2.5em; }
+            .carrossel { height: 300px; }
+            .sobre h2, .galeria h2, .contato h2 { font-size: 2em; }
+            .galeria img { height: 200px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Lucas Mendes</h1>
+        <p>Fotografia com Alma e Técnica</p>
+    </header>
+
+    <div class="carrossel">
+        <div class="carrossel-container">
+            <div class="carrossel-item ativo">
+                <img src="https://images.pexels.com/photos/1366630/pexels-photo-1366630.jpeg" alt="Retrato">
+            </div>
+            <div class="carrossel-item">
+                <img src="https://images.pexels.com/photos/185933/pexels-photo-185933.jpeg" alt="Evento">
+            </div>
+            <div class="carrossel-item">
+                <img src="https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg" alt="Natureza">
+            </div>
+        </div>
+        <button class="carrossel-btn prev" onclick="mudarFoto(-1)">❮</button>
+        <button class="carrossel-btn next" onclick="mudarFoto(1)">❯</button>
+        <div class="carrossel-indicadores">
+            <span class="indicador ativo" onclick="irParaFoto(0)"></span>
+            <span class="indicador" onclick="irParaFoto(1)"></span>
+            <span class="indicador" onclick="irParaFoto(2)"></span>
+        </div>
+    </div>
+
+    <section class="sobre">
+        <h2>Sobre Mim</h2>
+        <p>Sou Lucas Mendes, fotógrafo profissional com mais de 5 anos de experiência, especializado em retratos, eventos e natureza. Minha missão é transformar instantes em memórias eternas, combinando técnica apurada com um olhar artístico único.</p>
+        <p class="detalhes">Já trabalhei com clientes em casamentos, ensaios corporativos e projetos pessoais, sempre buscando capturar a essência de cada história. Baseado em São Paulo, atendo todo o Brasil e estou disponível para viagens internacionais.</p>
+    </section>
+
+    <section class="galeria">
+        <h2>Galeria</h2>
+        <div class="galeria-grid">
+            <img src="https://images.pexels.com/photos/1366630/pexels-photo-1366630.jpeg" alt="Retrato">
+            <img src="https://images.pexels.com/photos/185933/pexels-photo-185933.jpeg" alt="Evento">
+            <img src="https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg" alt="Natureza">
+        </div>
+    </section>
+
+    <section class="contato">
+        <h2>Entre em Contato</h2>
+        <a href="https://wa.me/5521991610035" target="_blank">Agende Sua Sessão</a>
+    </section>
+
+    <footer>
+        <p>© 2025 Lucas Mendes - Fotografia</p>
+    </footer>
+
+    <script>
+        let indice = 0;
+        const itens = document.querySelectorAll('.carrossel-item');
+        const indicadores = document.querySelectorAll('.indicador');
+        const totalImagens = itens.length;
+
+        function atualizarCarrossel() {
+            itens.forEach((item, i) => {
+                item.classList.toggle('ativo', i === indice);
+            });
+            indicadores.forEach((indicador, i) => {
+                indicador.classList.toggle('ativo', i === indice);
+            });
+        }
+
+        function mudarFoto(direcao) {
+            indice += direcao;
+            if (indice >= totalImagens) indice = 0;
+            if (indice < 0) indice = totalImagens - 1;
+            atualizarCarrossel();
+        }
+
+        function irParaFoto(novoIndice) {
+            indice = novoIndice;
+            atualizarCarrossel();
+        }
+
+        atualizarCarrossel();
+        setInterval(() => mudarFoto(1), 5000);
+    </script>
+</body>
+</html>
