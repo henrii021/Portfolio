@@ -15,7 +15,7 @@
             background: url('https://www.transparenttextures.com/patterns/light-paper-fibers.png');
         }
         header {
-            background: linear-gradient(rgba(45, 45, 45, 0.7), rgba(45, 45, 45, 0.7)), url('https://images.pexels.com/photos/733857/pexels-photo-733857.jpeg') no-repeat center/cover;
+            background: linear-gradient(rgba(45, 45, 45, 0.7), rgba(45, 45, 45, 0.7)), url('https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg') no-repeat center/cover;
             color: #fff;
             text-align: center;
             padding: 180px 20px;
@@ -67,27 +67,11 @@
             left: 50%;
             transform: translateX(-50%);
         }
-        .sobre .sobre-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-        .sobre .sobre-texto {
-            max-width: 600px;
-        }
         .sobre p {
             font-size: 1.2em;
             color: #555;
-            margin-bottom: 20px;
-        }
-        .sobre .sobre-imagem img {
-            width: 300px;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 50%;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto 20px;
         }
         .projetos {
             max-width: 1200px;
@@ -189,23 +173,38 @@
             transform: translateX(-50%);
         }
         .habilidades .habilidades-lista {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             margin-top: 40px;
         }
         .habilidade-item {
             background: #fff;
-            padding: 15px 25px;
+            padding: 20px;
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            font-size: 1.1em;
-            color: #555;
+            text-align: left;
             transition: transform 0.3s;
         }
         .habilidade-item:hover {
-            transform: scale(1.1);
+            transform: translateY(-5px);
+        }
+        .habilidade-item h3 {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2D2D2D;
+        }
+        .habilidade-barra {
+            background: #ddd;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .habilidade-nivel {
+            height: 100%;
+            background: linear-gradient(135deg, #2D2D2D, #555);
+            transition: width 0.5s ease;
         }
         footer {
             background-color: #2D2D2D;
@@ -244,7 +243,6 @@
             header { padding: 120px 10px; }
             header h1 { font-size: 3em; }
             .sobre h2, .projetos h2, .habilidades h2 { font-size: 2em; }
-            .sobre .sobre-imagem img { width: 200px; height: 200px; }
             .projeto-item img { height: 150px; }
         }
     </style>
@@ -257,15 +255,9 @@
 
     <section class="sobre">
         <h2>Sobre Mim</h2>
-        <div class="sobre-content">
-            <div class="sobre-texto">
-                <p>Sou Pedro Henrique, um desenvolvedor web e designer gráfico apaixonado por transformar ideias em experiências digitais incríveis. Com mais de 2 anos de experiência em social media e branding, criei marcas, logos e conteúdos visuais impactantes.</p>
-                <p>Agora, como estudante de programação, combino minha visão criativa com habilidades técnicas em HTML, CSS e JavaScript para desenvolver sites modernos, responsivos e funcionais que encantam e convertem. Meu objetivo é entregar projetos únicos que reflitam a essência de cada cliente.</p>
-            </div>
-            <div class="sobre-imagem">
-                <img src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg" alt="Pedro Henrique">
-            </div>
-        </div>
+        <p>Sou Pedro Henrique, um desenvolvedor web e designer gráfico apaixonado por criar soluções digitais que unem funcionalidade e estética. Com mais de 2 anos de experiência gerenciando contas no Instagram como social media, desenvolvi habilidades sólidas em branding, criação de logos e produção de conteúdo visual impactante para diversas marcas.</p>
+        <p>Atualmente, como estudante de programação, mergulho fundo em HTML, CSS e JavaScript, construindo sites modernos e responsivos que refletem as necessidades dos clientes. Meu foco é entregar projetos únicos, combinando minha visão criativa com um código limpo e eficiente, sempre buscando superar expectativas.</p>
+        <p>Além disso, tenho experiência em ferramentas como Photoshop e Figma, o que me permite criar designs personalizados antes de transformá-los em código. Estou constantemente aprendendo e explorando novas tecnologias para oferecer o melhor em cada trabalho.</p>
     </section>
 
     <section class="projetos">
@@ -295,12 +287,30 @@
     <section class="habilidades">
         <h2>Habilidades</h2>
         <div class="habilidades-lista">
-            <div class="habilidade-item">HTML</div>
-            <div class="habilidade-item">CSS</div>
-            <div class="habilidade-item">JavaScript</div>
-            <div class="habilidade-item">Design Gráfico</div>
-            <div class="habilidade-item">Branding</div>
-            <div class="habilidade-item">Social Media</div>
+            <div class="habilidade-item">
+                <h3>HTML - 5/5</h3>
+                <div class="habilidade-barra"><div class="habilidade-nivel" style="width: 100%;"></div></div>
+            </div>
+            <div class="habilidade-item">
+                <h3>CSS - 4/5</h3>
+                <div class="habilidade-barra"><div class="habilidade-nivel" style="width: 80%;"></div></div>
+            </div>
+            <div class="habilidade-item">
+                <h3>JavaScript - 3/5</h3>
+                <div class="habilidade-barra"><div class="habilidade-nivel" style="width: 60%;"></div></div>
+            </div>
+            <div class="habilidade-item">
+                <h3>Design Gráfico - 4/5</h3>
+                <div class="habilidade-barra"><div class="habilidade-nivel" style="width: 80%;"></div></div>
+            </div>
+            <div class="habilidade-item">
+                <h3>Branding - 4/5</h3>
+                <div class="habilidade-barra"><div class="habilidade-nivel" style="width: 80%;"></div></div>
+            </div>
+            <div class="habilidade-item">
+                <h3>Social Media - 5/5</h3>
+                <div class="habilidade-barra"><div class="habilidade-nivel" style="width: 100%;"></div></div>
+            </div>
         </div>
     </section>
 
