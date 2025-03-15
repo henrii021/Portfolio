@@ -18,20 +18,20 @@
             background: linear-gradient(rgba(45, 45, 45, 0.7), rgba(45, 45, 45, 0.7)), url('https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg') no-repeat center/cover;
             color: #fff;
             text-align: center;
-            padding: 180px 20px;
+            padding: 120px 20px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             position: relative;
         }
         header h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 4.5em;
+            font-size: 4em;
             font-weight: 700;
             margin-bottom: 20px;
             letter-spacing: 3px;
             animation: fadeInDown 1s ease;
         }
         header p {
-            font-size: 1.6em;
+            font-size: 1.4em;
             max-width: 700px;
             margin: 0 auto;
             animation: fadeInUp 1s ease 0.5s;
@@ -40,8 +40,8 @@
         }
         .sobre {
             max-width: 1200px;
-            margin: 80px auto;
-            padding: 60px 20px;
+            margin: 60px auto;
+            padding: 40px 20px;
             text-align: center;
             background: #fff;
             border-radius: 15px;
@@ -52,9 +52,9 @@
         }
         .sobre h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 3em;
+            font-size: 2.5em;
             font-weight: 700;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             position: relative;
         }
         .sobre h2::after {
@@ -68,10 +68,10 @@
             transform: translateX(-50%);
         }
         .sobre p {
-            font-size: 1.2em;
+            font-size: 1.1em;
             color: #555;
             max-width: 800px;
-            margin: 0 auto 20px;
+            margin: 0 auto 15px;
         }
         .projetos {
             max-width: 1200px;
@@ -111,6 +111,7 @@
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden; /* Evita que imagens excedam o contêiner */
         }
         .projeto-item:hover {
             transform: translateY(-5px);
@@ -118,10 +119,11 @@
         }
         .projeto-item img {
             width: 100%;
-            height: 200px;
-            object-fit: cover;
+            height: 200px; /* Altura fixa */
+            object-fit: cover; /* Mantém proporção */
             border-radius: 8px;
             margin-bottom: 15px;
+            display: block; /* Remove espaços indesejados */
         }
         .projeto-item h3 {
             font-size: 1.5em;
@@ -174,14 +176,14 @@
         }
         .habilidades .habilidades-lista {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
             margin-top: 40px;
         }
         .habilidade-item {
             background: #fff;
-            padding: 20px;
-            border-radius: 8px;
+            padding: 25px;
+            border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             text-align: left;
             transition: transform 0.3s;
@@ -190,15 +192,20 @@
             transform: translateY(-5px);
         }
         .habilidade-item h3 {
-            font-size: 1.3em;
+            font-size: 1.4em;
             font-weight: 600;
             margin-bottom: 10px;
             color: #2D2D2D;
         }
+        .habilidade-item p {
+            font-size: 0.95em;
+            color: #666;
+            margin-bottom: 15px;
+        }
         .habilidade-barra {
             background: #ddd;
-            height: 8px;
-            border-radius: 4px;
+            height: 10px;
+            border-radius: 5px;
             overflow: hidden;
         }
         .habilidade-nivel {
@@ -240,8 +247,8 @@
             to { opacity: 1; transform: translateY(0); }
         }
         @media (max-width: 768px) {
-            header { padding: 120px 10px; }
-            header h1 { font-size: 3em; }
+            header { padding: 100px 10px; }
+            header h1 { font-size: 2.5em; }
             .sobre h2, .projetos h2, .habilidades h2 { font-size: 2em; }
             .projeto-item img { height: 150px; }
         }
@@ -255,9 +262,7 @@
 
     <section class="sobre">
         <h2>Sobre Mim</h2>
-        <p>Sou Pedro Henrique, um desenvolvedor web e designer gráfico apaixonado por criar soluções digitais que unem funcionalidade e estética. Com mais de 2 anos de experiência gerenciando contas no Instagram como social media, desenvolvi habilidades sólidas em branding, criação de logos e produção de conteúdo visual impactante para diversas marcas.</p>
-        <p>Atualmente, como estudante de programação, mergulho fundo em HTML, CSS e JavaScript, construindo sites modernos e responsivos que refletem as necessidades dos clientes. Meu foco é entregar projetos únicos, combinando minha visão criativa com um código limpo e eficiente, sempre buscando superar expectativas.</p>
-        <p>Além disso, tenho experiência em ferramentas como Photoshop e Figma, o que me permite criar designs personalizados antes de transformá-los em código. Estou constantemente aprendendo e explorando novas tecnologias para oferecer o melhor em cada trabalho.</p>
+        <p>Sou Pedro Henrique, desenvolvedor web e designer gráfico com mais de 2 anos de experiência em social media e branding. Utilizo HTML, CSS e JavaScript para criar sites modernos e responsivos, combinando minha visão criativa com código eficiente para entregar projetos únicos.</p>
     </section>
 
     <section class="projetos">
@@ -289,26 +294,32 @@
         <div class="habilidades-lista">
             <div class="habilidade-item">
                 <h3>HTML - 5/5</h3>
+                <p>Domínio completo em estruturação de sites e semântica.</p>
                 <div class="habilidade-barra"><div class="habilidade-nivel" style="width: 100%;"></div></div>
             </div>
             <div class="habilidade-item">
                 <h3>CSS - 4/5</h3>
+                <p>Estilização avançada com layouts responsivos e animações.</p>
                 <div class="habilidade-barra"><div class="habilidade-nivel" style="width: 80%;"></div></div>
             </div>
             <div class="habilidade-item">
                 <h3>JavaScript - 3/5</h3>
+                <p>Interatividade básica e manipulação de DOM em aprendizado.</p>
                 <div class="habilidade-barra"><div class="habilidade-nivel" style="width: 60%;"></div></div>
             </div>
             <div class="habilidade-item">
                 <h3>Design Gráfico - 4/5</h3>
+                <p>Criação de layouts visuais com Photoshop e Figma.</p>
                 <div class="habilidade-barra"><div class="habilidade-nivel" style="width: 80%;"></div></div>
             </div>
             <div class="habilidade-item">
                 <h3>Branding - 4/5</h3>
+                <p>Desenvolvimento de identidades visuais fortes.</p>
                 <div class="habilidade-barra"><div class="habilidade-nivel" style="width: 80%;"></div></div>
             </div>
             <div class="habilidade-item">
                 <h3>Social Media - 5/5</h3>
+                <p>Gestão de conteúdo e estratégias digitais no Instagram.</p>
                 <div class="habilidade-barra"><div class="habilidade-nivel" style="width: 100%;"></div></div>
             </div>
         </div>
